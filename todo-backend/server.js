@@ -19,13 +19,17 @@ app.use(cors())
 //let todos = [];
 
 // connecting mongodb 
-mongoose.connect('mongodb+srv://tamilnilavan192:1234@cluster0.veic7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/mern-app')
-.then(()=>{
-   console.log('connected to database')
-})
-.catch((err)=>{
-   console.log(err)
-})
+const connectToDatabase = async () => {
+   try {
+       await mongoose.connect('mongodb+srv://tamilnilavan192:1234@cluster0.veic7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/mern-app');
+       console.log('Connected to database');
+   } catch (err) {
+       console.error('Error connecting to database:', err);
+   }
+};
+
+// Call the function to connect to the database
+connectToDatabase();
 
 // creating schema 
 
