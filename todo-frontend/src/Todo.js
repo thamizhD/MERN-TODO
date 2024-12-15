@@ -15,7 +15,7 @@ export default function Todo() {
     const [editTitle,setEditTitle] = useState("");
     const [editdescription,setEditDescription] = useState("")
 
-   const apiUrl = "http://localhost:8000"
+   const apiUrl = "https://mern-todo-d6y4.onrender.com"
 
     const handleSubmit = () => {
         setError("")
