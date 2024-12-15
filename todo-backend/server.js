@@ -71,16 +71,19 @@ const todomodel = mongoose.model('Todo', todoSchema)
 
    // get all item 
 
-   app.get('/todos', async (req,res) =>{
-      try{
-         const todos = await todomodel.find();
-         res.json(todos);
-      } catch (error){
-         console.log(error);
-         res.status(500).json({message: error.message});
+   app.get('/todos', async (req, res) => {
+      try {
+          const todos = await todomodel.find();
+          if (todos.length === 0) {
+              return res.status(200).json({ message: "No tasks available" });
+          }
+          res.json(todos);
+      } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: error.message });
       }
-      //res.json(todos);                       // api create 
-   })
+  });
+  
 
    // update a todo item 
 
